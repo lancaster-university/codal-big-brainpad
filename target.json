@@ -8,7 +8,7 @@
     "generate_hex":true,
     "config":{
         "DEVICE_SRAM_BASE":"0x200000EC",
-        "DEVICE_SRAM_END":"0x20010000",
+        "DEVICE_SRAM_END":"0x20018000",
         "DEVICE_STACK_BASE":"DEVICE_SRAM_END",
         "DEVICE_STACK_SIZE":2048,
         "DEVICE_HEAP_ALLOCATOR":1,
