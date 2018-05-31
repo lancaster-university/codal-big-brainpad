@@ -2,10 +2,13 @@
 #include "codal_target_hal.h"
 #include "CodalDmesg.h"
 
+void target_init();
+
 void cpu_init()
 {
     SystemCoreClockUpdate();
-    HAL_Init();
+
+    target_init();
 
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
     RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -52,8 +55,4 @@ void cpu_init()
     SystemCoreClockUpdate();
 
     __HAL_RCC_TIM5_CLK_ENABLE();
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-    __HAL_RCC_GPIOH_CLK_ENABLE();
 }
