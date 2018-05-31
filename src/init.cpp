@@ -4,7 +4,7 @@
 
 void target_init();
 
-void cpu_init()
+extern "C" void cpu_init()
 {
     SystemCoreClockUpdate();
 

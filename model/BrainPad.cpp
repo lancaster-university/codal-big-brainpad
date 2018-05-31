@@ -47,8 +47,6 @@ BrainPad::BrainPad() :
     device_instance = this;
 }
 
-void cpu_init();
-
 /**
   * Post constructor initialisation method.
   *
@@ -70,8 +68,6 @@ int BrainPad::init()
         return DEVICE_NOT_SUPPORTED;
 
     status |= DEVICE_INITIALIZED;
-
-    cpu_init();
 
     timer.init();
 
