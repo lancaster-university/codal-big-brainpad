@@ -38,7 +38,7 @@
             "url": "https://github.com/lancaster-university/codal-core"
         },
         {
-            "branch": "f0c5c52bbba5c997e2f21fda8b559d52742fb3e4",
+            "branch": "aec5d0b4bf306ac24bf1fcf560982eb2332344f3",
             "name": "codal-stm32",
             "type": "git",
             "url": "https://github.com/mmoskal/codal-stm32"
@@ -47,6 +47,6 @@
     "linker_flags": "-Wl,--no-wchar-size-warning -Wl,--gc-sections -mcpu=cortex-m4 -mthumb",
     "post_process": "",
     "processor": "STM32F4",
-    "snapshot_version": "v0.0.0",
+    "snapshot_version": "v0.0.1",
     "toolchain": "ARM_GCC"
 }
