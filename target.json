@@ -27,7 +27,7 @@
         "CODAL_TIMESTAMP":"uint64_t",
         "PROCESSOR_WORD_TYPE":"uint32_t"
     },
-    "definitions":"-DSTM32F4 -DSTM32F401xE",
+    "definitions":"-DSTM32F4 -DSTM32F401xE -DHSE_VALUE=8000000",
     "cmake_definitions":{
     },
     "cpu_opts":"-mcpu=cortex-m4 -mthumb",
