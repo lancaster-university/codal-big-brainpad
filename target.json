@@ -3,7 +3,7 @@
     "processor":"STM32F4",
     "architecture":"CORTEX_M4",
     "toolchain":"ARM_GCC",
-    "post_process":"",
+    "post_process":"python ./utils/uf2conv.py -o <OUTPUT_HEX_DESTINATION>/<OUTPUT_HEX_NAME>.uf2 -c <OUTPUT_BIN_LOCATION>",
     "generate_bin":true,
     "generate_hex":true,
     "config":{
