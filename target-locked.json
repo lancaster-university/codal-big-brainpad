@@ -47,6 +47,6 @@
     "linker_flags": "-Wl,--no-wchar-size-warning -Wl,--gc-sections -mcpu=cortex-m4 -mthumb", 
     "post_process": "python ./utils/uf2conv.py  -b 0x08008000 -o <OUTPUT_HEX_DESTINATION>/<OUTPUT_HEX_NAME>.uf2 -c <OUTPUT_BIN_LOCATION>", 
     "processor": "STM32F4", 
-    "snapshot_version": "v1.0.2", 
+    "snapshot_version": "v1.0.3", 
     "toolchain": "ARM_GCC"
 }
