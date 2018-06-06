@@ -1,25 +1,8 @@
-// do check before any includes - this needs to be passed from command line
-#ifndef HSE_VALUE
-#error "HSE_VALUE needs to be defined, eg to 8000000"
-#endif
-
 #include "stm32.h"
 #include "codal_target_hal.h"
 #include "CodalDmesg.h"
 
 void target_init();
-
-#if ((HSE_VALUE / 1000000) * 1000000) != HSE_VALUE
-#error "HSE_VALUE has to be divisible by a million"
-#endif
-
-#if HSE_VALUE < 4000000
-#error "HSE_VALUE has to be at least 4m"
-#endif
-
-#if HSE_VALUE > 25000000
-#error "HSE_VALUE has to be at most 25m"
-#endif
 
 extern "C" void cpu_init()
 {
@@ -44,7 +27,13 @@ extern "C" void cpu_init()
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
 
-    RCC_OscInitStruct.PLL.PLLM = HSE_VALUE / 1000000;
+    uint32_t pllm = HSE_VALUE / 1000000;
+
+    CODAL_ASSERT(pllm >= 4);
+    CODAL_ASSERT(pllm <= 25);
+    CODAL_ASSERT(pllm * 1000000 == HSE_VALUE);
+
+    RCC_OscInitStruct.PLL.PLLM = pllm;
     RCC_OscInitStruct.PLL.PLLN = 336;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
     RCC_OscInitStruct.PLL.PLLQ = 7;

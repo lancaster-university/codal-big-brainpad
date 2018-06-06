@@ -26,7 +26,7 @@
     }, 
     "cpp_flags": "-std=c++11 -fwrapv -fno-rtti -fno-threadsafe-statics -fno-exceptions -fno-unwind-tables -Wl,--gc-sections -Wl,--sort-common -Wl,--sort-section=alignment -Wno-array-bounds", 
     "cpu_opts": "-mcpu=cortex-m4 -mthumb", 
-    "definitions": "-DSTM32F4 -DSTM32F401xE -DHSE_VALUE=12000000 -DUSE_FULL_ASSERT", 
+    "definitions": "-DSTM32F4 -DSTM32F401xE -include codal-big-brainpad/inc/localconf.h",
     "device": "STM32", 
     "generate_bin": true, 
     "generate_hex": true, 
