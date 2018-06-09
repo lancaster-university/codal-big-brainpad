@@ -52,4 +52,8 @@ extern "C" void cpu_init()
     SystemCoreClockUpdate();
 
     __HAL_RCC_TIM5_CLK_ENABLE();
+
+    // enable backup registers (for reboot into bootloader or into app)
+    PWR->CR |= PWR_CR_DBP;
+    RCC->BDCR |= RCC_BDCR_RTCEN;
 }
