@@ -23,7 +23,7 @@
         "DEVICE_PANIC_HEAP_FULL":1,
         "DEVICE_DMESG_BUFFER_SIZE":1024,
         "CODAL_DEBUG":"CODAL_DEBUG_DISABLED",
-        "DEVICE_USB":1,
+        "DEVICE_USB":0,
         "CODAL_TIMESTAMP":"uint64_t",
         "PROCESSOR_WORD_TYPE":"uint32_t"
     },
