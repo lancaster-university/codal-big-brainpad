@@ -88,12 +88,12 @@ int BrainPad::init()
     status |= DEVICE_COMPONENT_STATUS_IDLE_TICK;
 
     synth.setSampleRate(pwm.getSampleRate());
-    synth.setTone(Synthesizer::SawtoothTone);
-    synth.setVolume(500);
-    synth.setFrequency(440);
+    synth.setTone(Synthesizer::SineTone);
+    // synth.setVolume(2000);
+    synth.setFrequency(400);
 
-    io.snd1.setAnalogPeriodUs(1000/16);
-    io.snd1.setAnalogValue(20);
+    //io.snd1.setAnalogPeriodUs(1000/16);
+    //io.snd1.setAnalogValue(20);
 
     return DEVICE_OK;
 }
