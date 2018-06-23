@@ -45,6 +45,9 @@ DEALINGS IN THE SOFTWARE.
 #include "CodalFiber.h"
 #include "MessageBus.h"
 
+#include "ZPWM.h"
+#include "Synthesizer.h"
+
 // Status flag values
 #define DEVICE_INITIALIZED                    0x01
 
@@ -63,6 +66,9 @@ namespace codal
             MessageBus                  messageBus;
             BrainPadIO                  io;
             //codal::_mbed::I2C           i2c;
+
+            Synthesizer synth;
+            ZPWM pwm;
 
             /**
              * Constructor.

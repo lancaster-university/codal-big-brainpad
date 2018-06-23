@@ -39,7 +39,8 @@ static BrainPad *device_instance = NULL;
 BrainPad::BrainPad() :
     timer(),
     messageBus(),
-    io()
+    io(),
+    pwm(io.snd0, synth.output)
 {
     // Clear our status
     status = 0;
@@ -85,6 +86,14 @@ int BrainPad::init()
 
     codal_dmesg_set_flush_fn(brainpad_dmesg_flush);
     status |= DEVICE_COMPONENT_STATUS_IDLE_TICK;
+
+    synth.setSampleRate(pwm.getSampleRate());
+    synth.setTone(Synthesizer::SawtoothTone);
+    synth.setVolume(500);
+    synth.setFrequency(440);
+
+    io.snd1.setAnalogPeriodUs(1000/16);
+    io.snd1.setAnalogValue(20);
 
     return DEVICE_OK;
 }

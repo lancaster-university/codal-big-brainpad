@@ -95,6 +95,9 @@ namespace codal
             ZPin        servoOne;
             ZPin        servoTwo;
 
+            ZPin        snd0;
+            ZPin        snd1;
+
             /**
              * Constructor.
              */
