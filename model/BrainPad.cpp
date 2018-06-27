@@ -40,10 +40,13 @@ BrainPad::BrainPad() :
     timer(),
     messageBus(),
     io(),
-    pwm(io.snd0, synth.output)
+    pwm(io.snd0, mixer)
 {
     // Clear our status
     status = 0;
+
+    io.buzzer.getDigitalValue();
+    io.hpEn.setDigitalValue(0);
 
     device_instance = this;
 }
@@ -87,13 +90,21 @@ int BrainPad::init()
     codal_dmesg_set_flush_fn(brainpad_dmesg_flush);
     status |= DEVICE_COMPONENT_STATUS_IDLE_TICK;
 
-    synth.setSampleRate(pwm.getSampleRate());
-    synth.setTone(Synthesizer::SineTone);
-    // synth.setVolume(2000);
-    synth.setFrequency(400);
+    synth0.setSampleRate(pwm.getSampleRate());
+    synth0.setTone(Synthesizer::SineTone);
 
-    //io.snd1.setAnalogPeriodUs(1000/16);
-    //io.snd1.setAnalogValue(20);
+    synth1.setSampleRate(pwm.getSampleRate());
+    synth1.setTone(Synthesizer::SineTone);
+
+    mixer.addChannel(synth0.output);
+    mixer.addChannel(synth1.output);
+
+    //synth.setVolume(400);
+    //synth.setFrequency(400);
+
+    //io.snd1.setAnalogPeriodUs(1000000/440);
+    //io.snd1.setAnalogValue(500);
+
 
     return DEVICE_OK;
 }

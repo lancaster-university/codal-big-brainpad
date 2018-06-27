@@ -97,6 +97,9 @@ namespace codal
 
             ZPin        snd0;
             ZPin        snd1;
+            ZPin        hpEn;
+            ZPin        bzEn;
+            ZPin        pwrEn;
 
             /**
              * Constructor.
