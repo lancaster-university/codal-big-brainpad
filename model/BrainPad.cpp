@@ -40,14 +40,14 @@ BrainPad::BrainPad() :
     timer(),
     messageBus(),
     io(),
-    pwm(io.snd0, mixer)
+    jackrouter(io.tx, io.sense, io.hpEn, io.bzEn, io.pwrEn),
+    pwm(io.snd, mixer)
 {
     // Clear our status
     status = 0;
 
     io.buzzer.getDigitalValue();
-    io.hpEn.setDigitalValue(0);
-
+    
     device_instance = this;
 }
 

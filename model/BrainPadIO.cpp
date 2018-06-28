@@ -54,10 +54,12 @@ BrainPadIO::BrainPadIO() :
     interrupt (ID_PIN_INT, PC_14, PIN_CAPABILITY_AD),
     servoOne (ID_PIN_SERVO_ONE, PA_3, PIN_CAPABILITY_AD),
     servoTwo (ID_PIN_SERVO_TWO, PA_0, PIN_CAPABILITY_AD),
-    snd0 (ID_PIN_P2, PA_2, PIN_CAPABILITY_AD),
-    snd1 (ID_PIN_P3, PB_5, PIN_CAPABILITY_AD),
-    hpEn (ID_PIN_P4, PA_10, PIN_CAPABILITY_AD),
-    bzEn (ID_PIN_P4, PA_9, PIN_CAPABILITY_AD),
-    pwrEn (ID_PIN_P4, PB_6, PIN_CAPABILITY_AD)
+    snd (ID_PIN_P2, PA_8, PIN_CAPABILITY_AD), // gray
+    hpEn (ID_PIN_P3, PA_2, PIN_CAPABILITY_AD), // white
+    bzEn (ID_PIN_P4, PA_10, PIN_CAPABILITY_AD), // black
+    tx (ID_PIN_P5, PA_9, PIN_CAPABILITY_AD), // purple; blue NC
+    pwrEn (ID_PIN_P6, PB_5, PIN_CAPABILITY_AD), // brown
+    tip (ID_PIN_P7, PB_4, PIN_CAPABILITY_AD), // orange
+    sense (ID_PIN_P0, PB_3, PIN_CAPABILITY_AD) // yellow
 {
 }
