@@ -97,6 +97,14 @@ namespace codal
             ZPin        servoOne;
             ZPin        servoTwo;
 
+            ZPin        snd;
+            ZPin        hpEn;
+            ZPin        bzEn;
+            ZPin        tx;
+            ZPin        pwrEn;
+            ZPin        tip;
+            ZPin        sense;
+
             /**
              * Constructor.
              */
