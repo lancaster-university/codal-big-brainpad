@@ -50,6 +50,8 @@ DEALINGS IN THE SOFTWARE.
 #include "Mixer.h"
 #include "JackRouter.h"
 
+#include "ZSingleWireSerial.h"
+
 // Status flag values
 #define DEVICE_INITIALIZED                    0x01
 
@@ -71,7 +73,9 @@ namespace codal
 
             Synthesizer synth0;
             Synthesizer synth1;
-            JackRouter jackrouter;
+            ZSingleWireSerial sws;
+            PktSerial pktSerial;
+            JackRouter jackRouter;
             Mixer mixer;
             ZPWM pwm;
 
