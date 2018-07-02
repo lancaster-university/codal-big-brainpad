@@ -73,11 +73,12 @@ namespace codal
 
             Synthesizer synth0;
             Synthesizer synth1;
+            Mixer mixer;
+            ZPWM pwm;
+     
             ZSingleWireSerial sws;
             PktSerial pktSerial;
             JackRouter jackRouter;
-            Mixer mixer;
-            ZPWM pwm;
 
             /**
              * Constructor.
