@@ -105,6 +105,15 @@ namespace codal
             ZPin        tip;
             ZPin        sense;
 
+            ZPin        mosi;
+            ZPin        miso;
+            ZPin        sck;
+            ZPin        cs;
+            ZPin        dc;
+
+            ZPin        displayReset;
+            ZPin        displayBl;
+
             /**
              * Constructor.
              */

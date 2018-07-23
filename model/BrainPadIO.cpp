@@ -60,7 +60,13 @@ BrainPadIO::BrainPadIO() :
     tx (ID_PIN_P5, PA_9, PIN_CAPABILITY_AD), // purple - TX
     pwrEn (ID_PIN_P6, PB_5, PIN_CAPABILITY_AD), // brown - MOSI
     tip (ID_PIN_P7, PB_4, PIN_CAPABILITY_AD), // orange - not used/MISO
-    sense (ID_PIN_P0, PB_3, PIN_CAPABILITY_AD) // yellow - CLK
-    // blue also not used (other sense)
+    sense (ID_PIN_P0, PB_3, PIN_CAPABILITY_AD), // yellow - CLK
+    mosi(ID_PIN_P0 + 10, PB_15, PIN_CAPABILITY_AD),
+    miso(ID_PIN_P0 + 11, PB_14, PIN_CAPABILITY_AD),
+    sck(ID_PIN_P0 + 12, PB_13, PIN_CAPABILITY_AD),
+    cs(ID_PIN_P0 + 13, PB_12, PIN_CAPABILITY_AD),
+    dc(ID_PIN_P0 + 14, PC_5, PIN_CAPABILITY_AD),
+    displayReset(ID_PIN_P0 + 15, PC_4, PIN_CAPABILITY_AD),
+    displayBl(ID_PIN_P0 + 16, PA_4, PIN_CAPABILITY_AD)
 {
 }

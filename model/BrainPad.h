@@ -51,6 +51,8 @@ DEALINGS IN THE SOFTWARE.
 #include "JackRouter.h"
 
 #include "ZSingleWireSerial.h"
+#include "ST7735.h"
+#include "ZSPI.h"
 
 // Status flag values
 #define DEVICE_INITIALIZED                    0x01
@@ -69,16 +71,19 @@ namespace codal
             ZTimer         timer;
             MessageBus                  messageBus;
             BrainPadIO                  io;
+            ZSPI                        spi;
             //codal::_mbed::I2C           i2c;
 
             Synthesizer synth0;
             Synthesizer synth1;
             Mixer mixer;
             ZPWM pwm;
-     
+
             ZSingleWireSerial sws;
             PktSerial pktSerial;
             JackRouter jackRouter;
+
+            ST7735 display;
 
             /**
              * Constructor.

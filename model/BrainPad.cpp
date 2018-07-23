@@ -40,12 +40,14 @@ BrainPad::BrainPad() :
     timer(),
     messageBus(),
     io(),
+    spi(io.mosi, io.miso, io.sck),
     synth0(SYNTHESIZER_SAMPLE_RATE, true),
     synth1(SYNTHESIZER_SAMPLE_RATE, true),
     pwm(io.snd, mixer),
     sws(io.tx),
     pktSerial(io.tx, sws),
-    jackRouter(io.tx, io.sense, io.hpEn, io.bzEn, io.pwrEn, pktSerial)
+    jackRouter(io.tx, io.sense, io.hpEn, io.bzEn, io.pwrEn, pktSerial),
+    display(spi, io.cs, io.dc, io.displayReset, io.displayBl, 128, 160)
 {
     // Clear our status
     status = 0;
