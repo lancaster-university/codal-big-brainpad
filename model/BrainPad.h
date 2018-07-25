@@ -79,6 +79,11 @@ namespace codal
             Mixer mixer;
             ZPWM pwm;
 
+            Button buttonUp;
+            Button buttonDown;
+            Button buttonLeft;
+            Button buttonRight;
+
             /**
              * Constructor.
              */
