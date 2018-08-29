@@ -47,7 +47,7 @@ BrainPad::BrainPad() :
     sws(io.tx),
     pktSerial(io.tx, sws),
     jackRouter(io.tx, io.sense, io.hpEn, io.bzEn, io.pwrEn, pktSerial),
-    display(spi, io.cs, io.dc, io.displayReset, io.displayBl, 128, 160)
+    display(spi, io.cs, io.dc, io.displayReset, io.displayBl, 128, 160),
     buttonUp(io.buttonUp, DEVICE_ID_BUTTON_UP, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
     buttonDown(io.buttonDown, DEVICE_ID_BUTTON_DOWN, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
     buttonLeft(io.buttonLeft, DEVICE_ID_BUTTON_LEFT, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
