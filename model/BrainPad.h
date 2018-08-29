@@ -85,6 +85,11 @@ namespace codal
 
             ST7735 display;
 
+            Button buttonUp;
+            Button buttonDown;
+            Button buttonLeft;
+            Button buttonRight;
+
             /**
              * Constructor.
              */
