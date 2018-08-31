@@ -22,8 +22,8 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef MICROBIT_H
-#define MICROBIT_H
+#ifndef BIG_BRAINPAD_H
+#define BIG_BRAINPAD_H
 
 #include "CodalHeapAllocator.h"
 #include "codal-core/inc/types/Event.h"
@@ -80,7 +80,7 @@ namespace codal
             ZPWM pwm;
 
             ZSingleWireSerial sws;
-            PktSerial pktSerial;
+            JACDAC jacdac;
             JackRouter jackRouter;
 
             ST7735 display;
