@@ -51,7 +51,6 @@ DEALINGS IN THE SOFTWARE.
 #include "JackRouter.h"
 
 #include "ZSingleWireSerial.h"
-#include "ST7735.h"
 #include "ZSPI.h"
 
 // Status flag values
@@ -82,8 +81,6 @@ namespace codal
             ZSingleWireSerial sws;
             JACDAC jacdac;
             JackRouter jackRouter;
-
-            ST7735 display;
 
             Button buttonUp;
             Button buttonDown;
