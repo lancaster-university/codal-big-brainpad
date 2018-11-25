@@ -45,7 +45,7 @@ BrainPad::BrainPad() :
     synth1(SYNTHESIZER_SAMPLE_RATE, true),
     pwm(io.snd, mixer),
     sws(io.tx),
-    jacdac(io.tx, sws),
+    jacdac(sws),
     jackRouter(io.tx, io.sense, io.hpEn, io.bzEn, io.pwrEn, jacdac),
     buttonUp(io.buttonUp, DEVICE_ID_BUTTON_UP, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
     buttonDown(io.buttonDown, DEVICE_ID_BUTTON_DOWN, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
