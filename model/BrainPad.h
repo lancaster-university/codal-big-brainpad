@@ -29,7 +29,7 @@ DEALINGS IN THE SOFTWARE.
 #include "codal-core/inc/types/Event.h"
 #include "CodalDevice.h"
 #include "ErrorNo.h"
-#include "ZTimer.h"
+// #include "ZTimer.h"
 #include "CodalCompat.h"
 #include "CodalComponent.h"
 #include "CodalDmesg.h"
@@ -52,6 +52,7 @@ DEALINGS IN THE SOFTWARE.
 
 #include "ZSingleWireSerial.h"
 #include "ZSPI.h"
+#include "STMLowLevelTimer.h"
 
 // Status flag values
 #define DEVICE_INITIALIZED                    0x01
@@ -67,7 +68,8 @@ namespace codal
     class BrainPad : public CodalComponent
     {
         public:
-            ZTimer         timer;
+            STMLowLevelTimer            tim5;
+            Timer                       timer;
             MessageBus                  messageBus;
             BrainPadIO                  io;
             ZSPI                        spi;
