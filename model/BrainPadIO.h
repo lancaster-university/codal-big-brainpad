@@ -114,6 +114,15 @@ namespace codal
             ZPin        displayReset;
             ZPin        displayBl;
 
+            // Headers
+            ZPin        d1;
+            ZPin        d2;
+            ZPin        d3;
+            ZPin        d4;
+            ZPin        d5;
+            ZPin        d6;
+            ZPin        d7;
+
             /**
              * Constructor.
              */
