@@ -68,6 +68,7 @@ namespace codal
     class BrainPad : public CodalComponent
     {
         public:
+            STMLowLevelTimer            tim2;
             STMLowLevelTimer            tim5;
             Timer                       timer;
             MessageBus                  messageBus;
@@ -82,12 +83,14 @@ namespace codal
 
             ZSingleWireSerial sws;
             JACDAC jacdac;
-            JackRouter jackRouter;
+        // JackRouter jackRouter;
 
             Button buttonUp;
             Button buttonDown;
             Button buttonLeft;
             Button buttonRight;
+
+            ZSingleWireSerial serialOut;
 
             /**
              * Constructor.

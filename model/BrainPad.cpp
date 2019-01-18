@@ -37,6 +37,7 @@ static BrainPad *device_instance = NULL;
   * that represent various device drivers used to control aspects of the micro:bit.
   */
 BrainPad::BrainPad() :
+    tim2(TIM2, TIM2_IRQn),
     tim5(TIM5, TIM5_IRQn),
     timer(tim5),
     messageBus(),
@@ -46,12 +47,13 @@ BrainPad::BrainPad() :
     synth1(SYNTHESIZER_SAMPLE_RATE, true),
     pwm(io.snd, mixer),
     sws(io.tx),
-    jacdac(sws, &io.ledRed, &io.ledGreen),
-    jackRouter(io.tx, io.sense, io.hpEn, io.bzEn, io.pwrEn, jacdac),
+    jacdac(sws, tim2, &io.ledRed),
+    // jackRouter(io.tx, io.sense, io.hpEn, io.bzEn, io.pwrEn, jacdac),
     buttonUp(io.buttonUp, DEVICE_ID_BUTTON_UP, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
     buttonDown(io.buttonDown, DEVICE_ID_BUTTON_DOWN, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
     buttonLeft(io.buttonLeft, DEVICE_ID_BUTTON_LEFT, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
-    buttonRight(io.buttonRight, DEVICE_ID_BUTTON_RIGHT, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up)
+    buttonRight(io.buttonRight, DEVICE_ID_BUTTON_RIGHT, DEVICE_BUTTON_ALL_EVENTS, ACTIVE_LOW, PullMode::Up),
+    serialOut(io.d1)
 {
     // Clear our status
     status = 0;
