@@ -4,11 +4,7 @@
 
 void target_init();
 
-extern "C" void cpu_init()
-{
-    SystemCoreClockUpdate();
-
-    target_init();
+void init_clocks() {
 
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
     RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -56,4 +52,21 @@ extern "C" void cpu_init()
     // enable backup registers (for reboot into bootloader or into app)
     PWR->CR |= PWR_CR_DBP;
     RCC->BDCR |= RCC_BDCR_RTCEN;
+}
+
+extern "C" void cpu_init()
+{
+    SystemCoreClockUpdate();
+    target_init();
+    init_clocks();
+}
+
+void target_deepsleep()
+{
+    HAL_PWREx_EnableFlashPowerDown();
+    // HAL_PWREx_EnableMainRegulatorLowVoltage();
+    // HAL_PWREx_EnableLowRegulatorLowVoltage();
+    HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    HAL_PWREx_DisableFlashPowerDown();
+    init_clocks();
 }
