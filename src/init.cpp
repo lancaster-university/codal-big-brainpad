@@ -4,6 +4,11 @@
 
 void target_init();
 
+extern "C" 
+__attribute__((weak))
+void update_osc_init(RCC_OscInitTypeDef *oscInit) {
+}
+
 void init_clocks() {
 
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
@@ -33,6 +38,9 @@ void init_clocks() {
     RCC_OscInitStruct.PLL.PLLN = 336;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
     RCC_OscInitStruct.PLL.PLLQ = 7;
+
+    update_osc_init(&RCC_OscInitStruct);
+
     HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
     /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
