@@ -72,8 +72,7 @@ extern "C" void cpu_init()
 void target_deepsleep()
 {
     HAL_PWREx_EnableFlashPowerDown();
-    // HAL_PWREx_EnableMainRegulatorLowVoltage();
-    // HAL_PWREx_EnableLowRegulatorLowVoltage();
+    HAL_PWREx_EnableLowRegulatorLowVoltage();
     HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
     HAL_PWREx_DisableFlashPowerDown();
     init_clocks();
