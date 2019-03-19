@@ -82,6 +82,7 @@ namespace codal
             ZPWM pwm;
 
             ZSingleWireSerial sws;
+            JDPhysicalLayer bus;
             JACDAC jacdac;
         // JackRouter jackRouter;
 
