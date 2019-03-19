@@ -1,6 +1,7 @@
 #include "stm32.h"
 #include "codal_target_hal.h"
 #include "CodalDmesg.h"
+#include "ErrorNo.h"
 
 void target_init();
 
@@ -29,9 +30,9 @@ extern "C" void cpu_init()
 
     uint32_t pllm = HSE_VALUE / 1000000;
 
-    CODAL_ASSERT(pllm >= 4);
-    CODAL_ASSERT(pllm <= 25);
-    CODAL_ASSERT(pllm * 1000000 == HSE_VALUE);
+    CODAL_ASSERT(pllm >= 4, DEVICE_HARDWARE_CONFIGURATION_ERROR);
+    CODAL_ASSERT(pllm <= 25, DEVICE_HARDWARE_CONFIGURATION_ERROR);
+    CODAL_ASSERT(pllm * 1000000 == HSE_VALUE, DEVICE_HARDWARE_CONFIGURATION_ERROR);
 
     RCC_OscInitStruct.PLL.PLLM = pllm;
     RCC_OscInitStruct.PLL.PLLN = 336;
