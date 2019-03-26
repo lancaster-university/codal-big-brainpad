@@ -57,4 +57,11 @@ extern "C" void cpu_init()
     // enable backup registers (for reboot into bootloader or into app)
     PWR->CR |= PWR_CR_DBP;
     RCC->BDCR |= RCC_BDCR_RTCEN;
+
+    // HACK: In some versions of the bootloader PA9 is used as VSENSE for the usb
+    // and enters the application space with PA9 in that mode.
+    // Here we disable that mode.
+    __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
+    USB_OTG_FS->GCCFG &= ~(USB_OTG_GCCFG_VBUSASEN | USB_OTG_GCCFG_VBUSBSEN);
+    __HAL_RCC_USB_OTG_FS_CLK_DISABLE();
 }
