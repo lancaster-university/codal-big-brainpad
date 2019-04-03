@@ -48,7 +48,6 @@ DEALINGS IN THE SOFTWARE.
 #include "ZPWM.h"
 #include "Synthesizer.h"
 #include "Mixer.h"
-#include "JackRouter.h"
 
 #include "ZSingleWireSerial.h"
 #include "ZSPI.h"
