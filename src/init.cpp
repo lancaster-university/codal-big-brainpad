@@ -6,7 +6,10 @@ void target_init();
 
 extern "C"
 __attribute__((weak))
-void update_osc_init(RCC_OscInitTypeDef *oscInit) {
+void apply_clock_init(RCC_OscInitTypeDef *oscInit, RCC_ClkInitTypeDef *clkConfig, 
+                      uint32_t flashLatency) {
+    HAL_RCC_OscConfig(oscInit);
+    HAL_RCC_ClockConfig(clkConfig, flashLatency);
 }
 
 void init_clocks() {
@@ -39,10 +42,6 @@ void init_clocks() {
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
     RCC_OscInitStruct.PLL.PLLQ = 7;
 
-    update_osc_init(&RCC_OscInitStruct);
-
-    HAL_RCC_OscConfig(&RCC_OscInitStruct);
-
     /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
        clocks dividers */
     RCC_ClkInitStruct.ClockType =
@@ -51,7 +50,8 @@ void init_clocks() {
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-    HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2);
+
+    apply_clock_init(&RCC_OscInitStruct, &RCC_ClkInitStruct, FLASH_LATENCY_2);
 
     SystemCoreClockUpdate();
 
