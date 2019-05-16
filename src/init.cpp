@@ -4,15 +4,15 @@
 
 void target_init();
 
-extern "C"
-__attribute__((weak))
-void apply_clock_init(RCC_OscInitTypeDef *oscInit, RCC_ClkInitTypeDef *clkConfig, 
-                      uint32_t flashLatency) {
+extern "C" __attribute__((weak)) void
+apply_clock_init(RCC_OscInitTypeDef *oscInit, RCC_ClkInitTypeDef *clkConfig, uint32_t flashLatency)
+{
     HAL_RCC_OscConfig(oscInit);
     HAL_RCC_ClockConfig(clkConfig, flashLatency);
 }
 
-void init_clocks() {
+void init_clocks()
+{
 
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
     RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -65,6 +65,10 @@ void init_clocks() {
     // and enters the application space with PA9 in that mode.
     // Here we disable that mode.
     __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
+#ifndef USB_OTG_GCCFG_VBUSASEN
+#define USB_OTG_GCCFG_VBUSASEN 0x00040000
+#define USB_OTG_GCCFG_VBUSBSEN 0x00080000
+#endif
     USB_OTG_FS->GCCFG &= ~(USB_OTG_GCCFG_VBUSASEN | USB_OTG_GCCFG_VBUSBSEN);
     __HAL_RCC_USB_OTG_FS_CLK_DISABLE();
 }
