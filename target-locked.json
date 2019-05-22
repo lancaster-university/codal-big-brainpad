@@ -25,20 +25,20 @@
         "USE_ACCEL_LSB": 0
     },
     "cpp_flags": "-std=c++11 -fwrapv -fno-rtti -fno-threadsafe-statics -fno-exceptions -fno-unwind-tables -Wl,--gc-sections -Wl,--sort-common -Wl,--sort-section=alignment -Wno-array-bounds",
-    "cpu_opts": "-mcpu=cortex-m4 -mthumb",
+    "cpu_opts": "-mcpu=cortex-m4 -mthumb -mfloat-abi=softfp -mfpu=fpv4-sp-d16",
     "definitions": "-DSTM32F4 -DSTM32F401xE -include codal-big-brainpad/inc/localconf.h",
     "device": "STM32",
     "generate_bin": true,
     "generate_hex": true,
     "libraries": [
         {
-            "branch": "dbf2121bdde4131f2aedd23e93811858c6f05b23",
+            "branch": "a76fd8d1a6ced3861ab925c1959997e06f4c15c1",
             "name": "codal-core",
             "type": "git",
             "url": "https://github.com/lancaster-university/codal-core"
         },
         {
-            "branch": "20c8580d46fd3d017be23a95f108c3a4a7dd69c7",
+            "branch": "b5935c22f8337b988e07fe303e0f0e8f2fee31b7",
             "name": "codal-stm32",
             "type": "git",
             "url": "https://github.com/lancaster-university/codal-stm32"
@@ -47,6 +47,6 @@
     "linker_flags": "-Wl,--no-wchar-size-warning -Wl,--gc-sections -mcpu=cortex-m4 -mthumb",
     "post_process": "python ./utils/uf2conv.py  -b 0x08010000 -o <OUTPUT_HEX_DESTINATION>/<OUTPUT_HEX_NAME>.uf2 -c <OUTPUT_BIN_LOCATION>",
     "processor": "STM32F4",
-    "snapshot_version": "v1.0.22",
+    "snapshot_version": "v1.0.23",
     "toolchain": "ARM_GCC"
 }
