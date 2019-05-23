@@ -5,11 +5,15 @@
 
 void target_init();
 
-extern "C" void cpu_init()
+extern "C" __attribute__((weak)) void
+apply_clock_init(RCC_OscInitTypeDef *oscInit, RCC_ClkInitTypeDef *clkConfig, uint32_t flashLatency)
 {
-    SystemCoreClockUpdate();
+    HAL_RCC_OscConfig(oscInit);
+    HAL_RCC_ClockConfig(clkConfig, flashLatency);
+}
 
-    target_init();
+void init_clocks()
+{
 
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
     RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -38,7 +42,6 @@ extern "C" void cpu_init()
     RCC_OscInitStruct.PLL.PLLN = 336;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
     RCC_OscInitStruct.PLL.PLLQ = 7;
-    HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
     /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
        clocks dividers */
@@ -48,7 +51,8 @@ extern "C" void cpu_init()
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-    HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2);
+
+    apply_clock_init(&RCC_OscInitStruct, &RCC_ClkInitStruct, FLASH_LATENCY_2);
 
     SystemCoreClockUpdate();
 
@@ -62,6 +66,26 @@ extern "C" void cpu_init()
     // and enters the application space with PA9 in that mode.
     // Here we disable that mode.
     __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
+#ifndef USB_OTG_GCCFG_VBUSASEN
+#define USB_OTG_GCCFG_VBUSASEN 0x00040000
+#define USB_OTG_GCCFG_VBUSBSEN 0x00080000
+#endif
     USB_OTG_FS->GCCFG &= ~(USB_OTG_GCCFG_VBUSASEN | USB_OTG_GCCFG_VBUSBSEN);
     __HAL_RCC_USB_OTG_FS_CLK_DISABLE();
+}
+
+extern "C" void cpu_init()
+{
+    SystemCoreClockUpdate();
+    target_init();
+    init_clocks();
+}
+
+void target_deepsleep()
+{
+    HAL_PWREx_EnableFlashPowerDown();
+    HAL_PWREx_EnableLowRegulatorLowVoltage();
+    HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+    HAL_PWREx_DisableFlashPowerDown();
+    init_clocks();
 }
