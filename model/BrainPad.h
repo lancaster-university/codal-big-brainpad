@@ -48,7 +48,6 @@ DEALINGS IN THE SOFTWARE.
 #include "ZPWM.h"
 #include "Synthesizer.h"
 #include "Mixer.h"
-#include "JackRouter.h"
 
 #include "ZSingleWireSerial.h"
 #include "ZSPI.h"
@@ -68,6 +67,7 @@ namespace codal
     class BrainPad : public CodalComponent
     {
         public:
+            STMLowLevelTimer            tim2;
             STMLowLevelTimer            tim5;
             Timer                       timer;
             MessageBus                  messageBus;
@@ -81,13 +81,16 @@ namespace codal
             ZPWM pwm;
 
             ZSingleWireSerial sws;
+            JDPhysicalLayer bus;
             JACDAC jacdac;
-            JackRouter jackRouter;
+        // JackRouter jackRouter;
 
             Button buttonUp;
             Button buttonDown;
             Button buttonLeft;
             Button buttonRight;
+
+            ZSingleWireSerial serialOut;
 
             /**
              * Constructor.
