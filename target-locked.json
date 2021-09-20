@@ -32,13 +32,13 @@
     "generate_hex": true,
     "libraries": [
         {
-            "branch": "e2efc4cb034b04e5db5d7f6669667194b4a49024",
+            "branch": "0e7b078f72ff8aaaac93613bdec390e6b5f5f8e8",
             "name": "codal-core",
             "type": "git",
             "url": "https://github.com/lancaster-university/codal-core"
         },
         {
-            "branch": "afeb2f2b5d4fece3a0112b54c28d81f97a7335c5",
+            "branch": "29143fb13137a33c68005cf737351f6a40bb2e4c",
             "name": "codal-stm32",
             "type": "git",
             "url": "https://github.com/lancaster-university/codal-stm32"
@@ -47,6 +47,6 @@
     "linker_flags": "-Wl,--no-wchar-size-warning -Wl,--gc-sections -mcpu=cortex-m4 -mthumb",
     "post_process": "python ./utils/uf2conv.py  -b 0x08010000 -o <OUTPUT_HEX_DESTINATION>/<OUTPUT_HEX_NAME>.uf2 -c <OUTPUT_BIN_LOCATION>",
     "processor": "STM32F4",
-    "snapshot_version": "v1.3.2",
+    "snapshot_version": "v1.3.3",
     "toolchain": "ARM_GCC"
 }
