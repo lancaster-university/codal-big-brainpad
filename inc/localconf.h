@@ -11,5 +11,5 @@
 #define USB_DEFAULT_VID 0x0483 // STmicro
 #define USB_DEFAULT_PID 0x5799 // similar to examples
 #define USB_EP_FLAG_NO_AUTO_ZLP 0x01
-#define DEVICE_USB_ENDPOINTS 3
+#define DEVICE_USB_ENDPOINTS 4 // 3 normal + control
 #define DEVICE_USB_ENDPOINT_SHARING 1
